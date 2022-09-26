@@ -9,13 +9,62 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack{
+            Text("Welcome back, user!")
+                .font(.title)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
+            Text(Date().addingTimeInterval(600), style: .date)
+            Circle()
+                .fill(.brown)
+                .frame(width: 200, height: 200)
+            Text("How are you today?")
+            Button(action: {
+                // What to perform
+            }) {
+                Text("Happy")
+                    .padding()
+                    .background(Color.brown)
+                    .foregroundColor(.white)
+                    .font(.title)
+            }
+            Button(action: {
+                // What to perform
+            }) {
+                Text("Satisfied")
+                    .padding()
+                    .background(Color.brown)
+                    .foregroundColor(.white)
+                    .font(.title)
+            }
+            Button(action: {
+                // What to perform
+            }) {
+                Text("Neutral")
+                    .padding()
+                    .background(Color.brown)
+                    .foregroundColor(.white)
+                    .font(.title)
+            }
+            Button(action: {
+                // What to perform
+            }) {
+                Text("Tired")
+                    .padding()
+                    .background(Color.brown)
+                    .foregroundColor(.white)
+                    .font(.title)
+            }
+            Button(action: {
+                // What to perform
+            }) {
+                Text("Upset")
+                    .padding()
+                    .background(Color.brown)
+                    .foregroundColor(.white)
+                    .font(.title)
+            }
         }
-        .padding()
+        
     }
 }
 
