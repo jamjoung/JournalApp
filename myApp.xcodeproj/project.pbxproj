@@ -17,6 +17,8 @@
 		81297C3528CFCAED00CABE26 /* myAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81297C3428CFCAED00CABE26 /* myAppTests.swift */; };
 		81297C3F28CFCAED00CABE26 /* myAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81297C3E28CFCAED00CABE26 /* myAppUITests.swift */; };
 		81297C4128CFCAED00CABE26 /* myAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81297C4028CFCAED00CABE26 /* myAppUITestsLaunchTests.swift */; };
+		817B025A28E4E31500E13806 /* NotePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B025928E4E31500E13806 /* NotePage.swift */; };
+		817B025C28E4E34F00E13806 /* NoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B025B28E4E34F00E13806 /* NoteStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		81297C3A28CFCAED00CABE26 /* myAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81297C3E28CFCAED00CABE26 /* myAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myAppUITests.swift; sourceTree = "<group>"; };
 		81297C4028CFCAED00CABE26 /* myAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		817B025928E4E31500E13806 /* NotePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotePage.swift; path = myApp/Note/NotePage.swift; sourceTree = SOURCE_ROOT; };
+		817B025B28E4E34F00E13806 /* NoteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +104,15 @@
 		81297C2228CFCAE600CABE26 /* myApp */ = {
 			isa = PBXGroup;
 			children = (
-				810828D428DB975500CD0782 /* CoreData.xcdatamodeld */,
+				81F661BA28E2383A0098898A /* UI */,
+				81F661B928E238320098898A /* Helpers */,
+				81F661B828E2382A0098898A /* Storage */,
+				81F661B728E2381A0098898A /* Note */,
+				81F661B628E237EC0098898A /* CoreDataModel */,
 				81297C2328CFCAE600CABE26 /* myAppApp.swift */,
 				81297C2528CFCAE600CABE26 /* ContentView.swift */,
 				810828D728DB9B2700CD0782 /* HomePage.swift */,
 				810828D928DB9E3600CD0782 /* MainPage.swift */,
-				81297C2728CFCAED00CABE26 /* Assets.xcassets */,
 				81297C2928CFCAED00CABE26 /* Preview Content */,
 			);
 			path = myApp;
@@ -134,6 +141,45 @@
 				81297C4028CFCAED00CABE26 /* myAppUITestsLaunchTests.swift */,
 			);
 			path = myAppUITests;
+			sourceTree = "<group>";
+		};
+		81F661B628E237EC0098898A /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				810828D428DB975500CD0782 /* CoreData.xcdatamodeld */,
+			);
+			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		81F661B728E2381A0098898A /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				817B025928E4E31500E13806 /* NotePage.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		81F661B828E2382A0098898A /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				817B025B28E4E34F00E13806 /* NoteStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		81F661B928E238320098898A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		81F661BA28E2383A0098898A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				81297C2728CFCAED00CABE26 /* Assets.xcassets */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,9 +312,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				817B025A28E4E31500E13806 /* NotePage.swift in Sources */,
 				810828DA28DB9E3600CD0782 /* MainPage.swift in Sources */,
 				810828D628DB975500CD0782 /* CoreData.xcdatamodeld in Sources */,
 				81297C2628CFCAE600CABE26 /* ContentView.swift in Sources */,
+				817B025C28E4E34F00E13806 /* NoteStorage.swift in Sources */,
 				81297C2428CFCAE600CABE26 /* myAppApp.swift in Sources */,
 				810828D828DB9B2700CD0782 /* HomePage.swift in Sources */,
 			);
