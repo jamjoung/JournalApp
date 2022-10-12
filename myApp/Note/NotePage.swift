@@ -8,20 +8,20 @@
 import Foundation
 
 class NotePage{
-    private(set) var noteId        : UUID
+    private(set) var noteID        : UUID
     private(set) var noteTitle     : String
     private(set) var noteText      : String
     private(set) var noteTimestamp : Int64
     
     init(noteTitle:String, noteText:String, noteTimestamp:Int64) {
-            self.noteId        = UUID()
+            self.noteID        = UUID()
             self.noteTitle     = noteTitle
             self.noteText      = noteText
             self.noteTimestamp = noteTimestamp
         }
 
-        init(noteId: UUID, noteTitle:String, noteText:String, noteTimestamp:Int64) {
-            self.noteId        = noteId
+        init(noteID: UUID, noteTitle:String, noteText:String, noteTimestamp:Int64) {
+            self.noteID        = noteID
             self.noteTitle     = noteTitle
             self.noteText      = noteText
             self.noteTimestamp = noteTimestamp
