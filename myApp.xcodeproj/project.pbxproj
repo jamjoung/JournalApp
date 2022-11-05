@@ -17,10 +17,11 @@
 		81297C3528CFCAED00CABE26 /* myAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81297C3428CFCAED00CABE26 /* myAppTests.swift */; };
 		81297C3F28CFCAED00CABE26 /* myAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81297C3E28CFCAED00CABE26 /* myAppUITests.swift */; };
 		81297C4128CFCAED00CABE26 /* myAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81297C4028CFCAED00CABE26 /* myAppUITestsLaunchTests.swift */; };
+		8143B6C42915EAF700CB9670 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8143B6C32915EAF700CB9670 /* PersistenceController.swift */; };
+		8143B6C62915ECAC00CB9670 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8143B6C52915ECAB00CB9670 /* Note+CoreDataClass.swift */; };
 		8150C36328F0CBD900F98892 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150C36228F0CBD900F98892 /* CoreDataHelper.swift */; };
 		8150C36528F69EF200F98892 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8150C36428F69EF200F98892 /* DateHelper.swift */; };
-		817B025A28E4E31500E13806 /* NotePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B025928E4E31500E13806 /* NotePage.swift */; };
-		817B025C28E4E34F00E13806 /* NoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B025B28E4E34F00E13806 /* NoteStorage.swift */; };
+		81C5F6BA291307EA00784B70 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C5F6B9291307EA00784B70 /* NoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,10 +55,11 @@
 		81297C3A28CFCAED00CABE26 /* myAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81297C3E28CFCAED00CABE26 /* myAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myAppUITests.swift; sourceTree = "<group>"; };
 		81297C4028CFCAED00CABE26 /* myAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8143B6C32915EAF700CB9670 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		8143B6C52915ECAB00CB9670 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8150C36228F0CBD900F98892 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		8150C36428F69EF200F98892 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
-		817B025928E4E31500E13806 /* NotePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotePage.swift; path = myApp/Note/NotePage.swift; sourceTree = SOURCE_ROOT; };
-		817B025B28E4E34F00E13806 /* NoteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStorage.swift; sourceTree = "<group>"; };
+		81C5F6B9291307EA00784B70 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,13 +112,12 @@
 			children = (
 				81F661BA28E2383A0098898A /* UI */,
 				81F661B928E238320098898A /* Helpers */,
-				81F661B828E2382A0098898A /* Storage */,
-				81F661B728E2381A0098898A /* Note */,
-				81F661B628E237EC0098898A /* CoreDataModel */,
 				81297C2328CFCAE600CABE26 /* myAppApp.swift */,
 				81297C2528CFCAE600CABE26 /* ContentView.swift */,
 				810828D728DB9B2700CD0782 /* HomePage.swift */,
 				810828D928DB9E3600CD0782 /* MainPage.swift */,
+				81C5F6B9291307EA00784B70 /* NoteView.swift */,
+				810828D428DB975500CD0782 /* CoreData.xcdatamodeld */,
 				81297C2928CFCAED00CABE26 /* Preview Content */,
 			);
 			path = myApp;
@@ -147,34 +148,12 @@
 			path = myAppUITests;
 			sourceTree = "<group>";
 		};
-		81F661B628E237EC0098898A /* CoreDataModel */ = {
-			isa = PBXGroup;
-			children = (
-				810828D428DB975500CD0782 /* CoreData.xcdatamodeld */,
-			);
-			path = CoreDataModel;
-			sourceTree = "<group>";
-		};
-		81F661B728E2381A0098898A /* Note */ = {
-			isa = PBXGroup;
-			children = (
-				817B025928E4E31500E13806 /* NotePage.swift */,
-			);
-			path = Note;
-			sourceTree = "<group>";
-		};
-		81F661B828E2382A0098898A /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				817B025B28E4E34F00E13806 /* NoteStorage.swift */,
-			);
-			path = Storage;
-			sourceTree = "<group>";
-		};
 		81F661B928E238320098898A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				8150C36228F0CBD900F98892 /* CoreDataHelper.swift */,
+				8143B6C32915EAF700CB9670 /* PersistenceController.swift */,
+				8143B6C52915ECAB00CB9670 /* Note+CoreDataClass.swift */,
 				8150C36428F69EF200F98892 /* DateHelper.swift */,
 			);
 			path = Helpers;
@@ -318,15 +297,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				817B025A28E4E31500E13806 /* NotePage.swift in Sources */,
 				810828DA28DB9E3600CD0782 /* MainPage.swift in Sources */,
 				8150C36328F0CBD900F98892 /* CoreDataHelper.swift in Sources */,
+				8143B6C62915ECAC00CB9670 /* Note+CoreDataClass.swift in Sources */,
+				81C5F6BA291307EA00784B70 /* NoteView.swift in Sources */,
 				810828D628DB975500CD0782 /* CoreData.xcdatamodeld in Sources */,
 				81297C2628CFCAE600CABE26 /* ContentView.swift in Sources */,
-				817B025C28E4E34F00E13806 /* NoteStorage.swift in Sources */,
 				8150C36528F69EF200F98892 /* DateHelper.swift in Sources */,
 				81297C2428CFCAE600CABE26 /* myAppApp.swift in Sources */,
 				810828D828DB9B2700CD0782 /* HomePage.swift in Sources */,
+				8143B6C42915EAF700CB9670 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,7 +639,8 @@
 				810828D528DB975500CD0782 /* CoreData.xcdatamodel */,
 			);
 			currentVersion = 810828D528DB975500CD0782 /* CoreData.xcdatamodel */;
-			path = CoreData.xcdatamodeld;
+			name = CoreData.xcdatamodeld;
+			path = CoreDataModel/CoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

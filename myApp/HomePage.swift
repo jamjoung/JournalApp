@@ -8,13 +8,34 @@
 import SwiftUI
 
 struct HomePage: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.noteTitle)])
+    var allNotes: FetchedResults<Note>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            VStack{
+                List {
+                    ForEach(allNotes) { note in
+                        HStack {
+                            Circle()
+                                .frame(width: 15, height: 15)
+                            Spacer().frame(width: 20)
+                            Text(note.noteTitle)
+                            Text("Hello, World!")
+                            Spacer()
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {
-        HomePage()
+        let persistenceController = PersistenceController.shared
+        HomePage().environment(\.managedObjectContext, persistenceController.container.viewContext)
     }
 }

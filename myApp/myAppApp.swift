@@ -4,14 +4,18 @@
 //
 //  Created by Jamie Joung on 9/12/22.
 //
-
 import SwiftUI
 
 @main
-struct myAppApp: App {
+struct JournalApp: App {
+    
+    let persistenceController = PersistenceController.shared
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{
+                MainPage().environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }
+            
         }
     }
 }
