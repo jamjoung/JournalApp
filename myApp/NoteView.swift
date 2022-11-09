@@ -2,69 +2,77 @@
 //  NoteView.swift
 //  myApp
 //
-//  Created by Jamie Joung on 10/7/22.
+//  Created by Jamie Joung on 11/7/22.
 //
 
+
+import Foundation
 import SwiftUI
 import CoreData
 
 struct NoteView: View {
     
-    @State private var goToHome: Bool = false
-    
-    @State private var title: String = ""
-    @State private var text: String = ""
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteTimestamp", ascending: false)]) private var allEntries: FetchedResults<Note>
+    @State var selectedIndex = 0
+    @State var text = ""
+    @State var title = ""
+    @State private var goHome: Bool = false
+    
+    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteTimestamp", ascending:false)]) private var allNotes : FetchedResults<Note>
+    
+    
+    let emotions = ["Happy", "Satisfied", "Neutral", "Tired", "Upset"]
+    
 
-       private func saveNote() {
-
-           do {
-               let note = Note(context: viewContext)
-               note.noteTitle = title
-               note.noteText = text
-               note.noteTimestamp = Date()
-               note.noteID = UUID()
-               try viewContext.save()
-           } catch {
-               print(error.localizedDescription)
-           }
-
-       }
+    func saveNote() {
+        let newNote = Note(context:viewContext)
+        newNote.noteID = UUID()
+        newNote.noteTitle = self.title
+        newNote.noteText = self.text
+        newNote.noteTimestamp = Date()
+        
+        do {
+            try viewContext.save()
+            print(newNote.noteTitle)
+            print("Note saved.")
+           
+            
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+    }
     
     var body: some View {
         NavigationView{
-            ZStack {
-                VStack(alignment: .center) {
-                    TextField("Note Title", text: $title)
-                        .textFieldStyle(.roundedBorder)
-
+            VStack{
+                Form{
+                    Section(header: Text("Note Title")){
+                        TextField("Enter Title", text: $title)
+                    }
+                        Section(header: Text("Select Emotion")){
+                            Picker(selection: $selectedIndex, label: Text("Emotion")){
+                                ForEach(0 ..< emotions.count){
+                                    Text(self.emotions[$0]).tag($0)
+                                }
+                            }
+                        }
                     TextField("Write about your day!", text: $text, axis: .vertical)
                         .lineLimit(15, reservesSpace:true)
-                        .textFieldStyle(.roundedBorder)
-                    
-                    NavigationLink(destination: HomePage(), isActive: $goToHome)
-                    {
-                        Button(action: {
-                            saveNote()
-                            goToHome = true
-                        }){
-                            Text("Save Note")
-                        }
-                        //                    Button("Save"){
-                        ////                        saveDream()
-                        //                    }
+                }
+                
+                NavigationLink(destination: HomePage(), isActive: $goHome)
+                {
+                    Button(action: {
+                        saveNote()
+                        goHome = true
+                    }){
+                        Text("Save Note")
                     }
-                    .padding(10)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.indigo)
-                    .foregroundColor(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius:10, style:.continuous))
-                    Spacer()
+                    
                 }
             }
-            
         }
     }
 }
@@ -72,9 +80,9 @@ struct NoteView: View {
 struct NoteView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            NoteView()
+            let persistentContainer = CoreDataHelper.shared.persistentContainer
+            NoteView().environment(\.managedObjectContext, persistentContainer.viewContext)
         }
     }
 }
-
 
