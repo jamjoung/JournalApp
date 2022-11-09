@@ -1,8 +1,8 @@
 //
-//  ContentView.swift
-//  DreamJournal
+//  NoteView.swift
+//  myApp
 //
-//  Created by CUBS Customer on 10/7/22.
+//  Created by Jamie Joung on 10/7/22.
 //
 
 import SwiftUI
