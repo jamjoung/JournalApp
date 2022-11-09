@@ -6,21 +6,20 @@
 //
 
 import SwiftUI
+import CoreData
+
 
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            
+            MainPage()
         }
     }
 }
 
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{
-            ContentView()//.environment(\.managedObjectContext, persistentContainer.viewContext)
-        }
+        ContentView()//.environment(\.managedObjectContext, persistentContainer.viewContext)
+        
     }
 }

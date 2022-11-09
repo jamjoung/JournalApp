@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
+
 
 struct MainPage: View {
     @State var showView = false
+    @State var toNote = false
+  
     var body: some View {
         NavigationView{
             VStack{
@@ -21,16 +25,16 @@ struct MainPage: View {
                     .frame(width: 200, height: 200)
                 Text("How are you today?")
                 
-               
-                
-                
-                Button(action: {
-                    print("Button")},
-                       label: {NavigationLink(destination: CreateNoteView()){Text("Happy")
-                        .padding()
-                        .background(Color.brown)
-                        .foregroundColor(.white)
-                    .font(.title)}})
+                NavigationLink(destination: CreateNoteView(), isActive: $toNote)
+                {
+                    Button(action: {
+                        toNote = true
+                        
+                    }){
+                        Text("Happy")
+                    }
+                    
+                }
                    
                 
                     Text("Satisfied")

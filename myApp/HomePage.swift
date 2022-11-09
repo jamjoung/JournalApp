@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HomePage: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -22,7 +23,7 @@ struct HomePage: View {
                             Circle()
                                 .frame(width: 15, height: 15)
                             Spacer().frame(width: 20)
-                            Text(note.noteTitle)
+                            Text(note.noteTitle ?? "")
                             Text("Hello, World!")
                             Spacer()
                         }
@@ -35,7 +36,7 @@ struct HomePage: View {
 
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {
-        let persistenceController = PersistenceController.shared
-        HomePage().environment(\.managedObjectContext, persistenceController.container.viewContext)
+        let persistentContainer = CoreDataHelper.shared.persistentContainer
+        HomePage().environment(\.managedObjectContext, persistentContainer.viewContext)
     }
 }

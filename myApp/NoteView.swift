@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftUI
+import CoreData
+
 
 struct CreateNoteView: View {
     @State var showView = false
@@ -79,9 +81,8 @@ struct CreateNoteView: View {
     }
 }
 
-struct NoteView_Previews: PreviewProvider {
+struct CreateNoteView_Previews: PreviewProvider {
     static var previews: some View {
-        let persistenceController = PersistenceController.shared
-        HomePage().environment(\.managedObjectContext, persistenceController.container.viewContext)
+        CreateNoteView()
     }
 }

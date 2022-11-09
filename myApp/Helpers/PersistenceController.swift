@@ -12,7 +12,7 @@ final class PersistenceController {
     static let shared = PersistenceController()
     
     lazy var container: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "JournalApp")
+        let container = NSPersistentContainer(name: "NoteModel")
         container.loadPersistentStores {description, error in
             if let error = error {
                 fatalError("Unable to load persistent store: \(error)")
