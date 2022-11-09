@@ -1,88 +1,80 @@
 //
-//  NoteView.swift
-//  myApp
+//  ContentView.swift
+//  DreamJournal
 //
-//  Created by Jamie Joung on 11/2/22.
+//  Created by CUBS Customer on 10/7/22.
 //
 
-import Foundation
 import SwiftUI
 import CoreData
 
-
-struct CreateNoteView: View {
-    @State var showView = false
-    @State private var noteText: String = ""
-    @State private var noteTitle: String = ""
+struct NoteView: View {
+    
+    @State private var goToHome: Bool = false
+    
+    @State private var title: String = ""
+    @State private var text: String = ""
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.noteTitle)])
-    var allNotes: FetchedResults<Note>
-    
-//    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteTimestamp", ascending: false)]) private var allNotes: FetchedResults<Note>
-    @State private var date = Date() // <1>
-    
-    static var df: DateFormatter { // <2>
-        let df = DateFormatter()
-        df.dateStyle = .short
-        return df
-    }
-    
-    
-    private func saveNote() {
-        
-        do {
-            let note = Note(context: viewContext)
-            //note.noteID =
-            note.noteTitle = noteTitle
-            note.noteText = noteText
-            note.noteTimestamp = Date()
-            try PersistenceController.shared.saveContext()
-        }
-        catch {
-            print(error.localizedDescription)
-        }
-        
-    }
+    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteTimestamp", ascending: false)]) private var allEntries: FetchedResults<Note>
+
+       private func saveNote() {
+
+           do {
+               let note = Note(context: viewContext)
+               note.noteTitle = title
+               note.noteText = text
+               note.noteTimestamp = Date()
+               note.noteID = UUID()
+               try viewContext.save()
+           } catch {
+               print(error.localizedDescription)
+           }
+
+       }
     
     var body: some View {
         NavigationView{
-            VStack{
-                TextField(
-                    "Date",
-                    value: $date, // <3>
-                    formatter: CreateNoteView.df, // <4>
-                    onEditingChanged: { _ in
-                    }, onCommit: {
-                    })
-                
-                TextField("Note Title", text: $noteTitle)
-                    .textFieldStyle(.roundedBorder)
-                
-                
-                TextField("Write about your day!", text: $noteText)
-                    .textFieldStyle(.roundedBorder)
-                
-                Button(action: {
-                    saveNote()},
-                       label: {NavigationLink(destination: HomePage()){Text("Save")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                    .font(.title)}})
+            ZStack {
+                VStack(alignment: .center) {
+                    TextField("Note Title", text: $title)
+                        .textFieldStyle(.roundedBorder)
+
+                    TextField("Write about your day!", text: $text, axis: .vertical)
+                        .lineLimit(15, reservesSpace:true)
+                        .textFieldStyle(.roundedBorder)
                     
-                .padding(10)
-                .frame(maxWidth: .infinity)
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                    NavigationLink(destination: HomePage(), isActive: $goToHome)
+                    {
+                        Button(action: {
+                            saveNote()
+                            goToHome = true
+                        }){
+                            Text("Save Note")
+                        }
+                        //                    Button("Save"){
+                        ////                        saveDream()
+                        //                    }
+                    }
+                    .padding(10)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.indigo)
+                    .foregroundColor(Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius:10, style:.continuous))
+                    Spacer()
+                }
             }
+            
         }
     }
 }
 
-struct CreateNoteView_Previews: PreviewProvider {
+struct NoteView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateNoteView()
+        NavigationView{
+            NoteView()
+        }
     }
 }
+
+

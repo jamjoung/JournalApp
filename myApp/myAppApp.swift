@@ -5,15 +5,16 @@
 //  Created by Jamie Joung on 9/12/22.
 //
 import SwiftUI
+import CoreData
 
 @main
 struct JournalApp: App {
     
-    let persistenceController = PersistenceController.shared
+    let persistentContainer = CoreDataHelper.shared.persistentContainer
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                MainPage().environment(\.managedObjectContext, persistenceController.container.viewContext)
+                NoteView().environment(\.managedObjectContext, persistentContainer.viewContext)
             }
             
         }
